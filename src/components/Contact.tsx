@@ -1,12 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { siteConfig } from "@/lib/data";
+import { siteConfig } from "@/lib/site";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="section-lazy py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
           <div className="relative min-h-[520px] overflow-hidden rounded-3xl shadow-2xl">
@@ -14,6 +12,7 @@ export default function Contact() {
               src="/images/contact-envelope.jpg"
               alt="Contact Dupak"
               fill
+              loading="lazy"
               className="object-cover"
               sizes="100vw"
             />

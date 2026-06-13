@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { navLinks, siteConfig } from "@/lib/data";
+import Link from "next/link";
+import { navLinks, productCategories, siteConfig } from "@/lib/data";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -7,17 +8,18 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <a href="#" className="inline-block">
+            <Link href="/" className="inline-block">
               <Image
                 src={siteConfig.logo}
                 alt="Dupak logo"
                 width={140}
                 height={48}
                 className="h-10 w-auto"
+                loading="lazy"
               />
-            </a>
+            </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
               {siteConfig.description}
             </p>
@@ -30,12 +32,30 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-muted transition-colors hover:text-primary"
                   >
                     {link.label}
-                  </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-secondary">
+              Products
+            </h4>
+            <ul className="mt-4 space-y-2">
+              {productCategories.map((category) => (
+                <li key={category.slug}>
+                  <Link
+                    href={`/products/${category.slug}`}
+                    className="text-sm text-muted transition-colors hover:text-primary"
+                  >
+                    {category.name}
+                  </Link>
                 </li>
               ))}
             </ul>

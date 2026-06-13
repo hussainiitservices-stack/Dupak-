@@ -1,23 +1,153 @@
-export const siteConfig = {
-  name: "Dupak",
-  tagline: "Branding Made Easy",
-  description:
-    "Manufacturing branded paper cups, plastic cups, PET bottles, paper bags, boxes & more. Custom packaging solutions across the UAE & GCC.",
-  email: "info@dupak.net",
-  whatsapp: "https://wa.me/971000000000",
-  logo: "/images/logo.png",
-  social: {
-    instagram: "https://instagram.com",
-    facebook: "https://facebook.com",
-    linkedin: "https://linkedin.com",
-  },
-};
+export { siteConfig } from "./site";
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#products" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Products", href: "/products" },
+  { label: "Process", href: "/#process" },
+  { label: "Contact", href: "/#contact" },
+];
+
+export type Product = {
+  slug: string;
+  name: string;
+  sizes: string;
+  description: string;
+  image: string;
+  thumb: string;
+  categorySlug: string;
+  subcategorySlug: string;
+};
+
+export type ProductSubcategory = {
+  slug: string;
+  name: string;
+  description: string;
+  image: string;
+  productSlugs: string[];
+  lineSpecSlug?: string;
+};
+
+export type ProductCategory = {
+  slug: string;
+  name: string;
+  description: string;
+  image: string;
+  subcategories: ProductSubcategory[];
+};
+
+export const productCategories: ProductCategory[] = [
+  {
+    slug: "paper-cups",
+    name: "Paper Cups",
+    description: "Hot & cold paper cups with custom branding — single wall, double wall, and U-shape.",
+    image: "/images/paper-cups.png",
+    subcategories: [
+      {
+        slug: "single-wall-cup",
+        name: "Single Wall Cup",
+        description: "4 oz to 22 oz with foiling, emboss, or standard print.",
+        image: "/images/paper-cups-detail.jpg",
+        productSlugs: ["paper-cups"],
+        lineSpecSlug: "single-wall-cup",
+      },
+      {
+        slug: "double-wall-cup",
+        name: "Double Wall Cup",
+        description: "Insulated cups that keep drinks hot and hands cool.",
+        image: "/images/paper-cups.png",
+        productSlugs: ["paper-cups"],
+        lineSpecSlug: "double-wall-cup",
+      },
+      {
+        slug: "u-shape-cups",
+        name: "U-Shape Cups",
+        description: "Distinctive profile cups that stand out on any counter.",
+        image: "/images/u-shape-cups-detail.png",
+        productSlugs: ["u-shape-cups"],
+      },
+    ],
+  },
+  {
+    slug: "pet-drinkware",
+    name: "PET Cups & Bottles",
+    description: "Crystal-clear PET cups and bottles for juices, smoothies, and beverages.",
+    image: "/images/pet-cups.png",
+    subcategories: [
+      {
+        slug: "pet-cups",
+        name: "PET Cups",
+        description: "Ultra-clear cups for iced drinks and takeaway.",
+        image: "/images/pet-cups-detail.png",
+        productSlugs: ["pet-cups"],
+      },
+      {
+        slug: "pet-bottles",
+        name: "PET Bottles",
+        description: "Custom-labelled bottles for water and juices.",
+        image: "/images/pet-bottles-detail.png",
+        productSlugs: ["pet-bottles"],
+      },
+    ],
+  },
+  {
+    slug: "bowls",
+    name: "Bowls",
+    description: "Paper bowls for ice cream, gelato, acai, and desserts.",
+    image: "/images/ice-cream-bowls.png",
+    subcategories: [
+      {
+        slug: "ice-cream-bowls",
+        name: "Ice Cream Bowls",
+        description: "Thick bowls for gelato and frozen yogurt.",
+        image: "/images/ice-cream-bowls-detail.png",
+        productSlugs: ["ice-cream-bowls"],
+      },
+      {
+        slug: "acai-bowls",
+        name: "Acai Bowls",
+        description: "Stylish bowls for smoothie and acai brands.",
+        image: "/images/acai-bowls-detail.png",
+        productSlugs: ["acai-bowls"],
+      },
+    ],
+  },
+  {
+    slug: "bags-boxes",
+    name: "Bags & Boxes",
+    description: "Branded paper bags and luxury packaging boxes.",
+    image: "/images/paper-bags.png",
+    subcategories: [
+      {
+        slug: "paper-bags",
+        name: "Paper Bags",
+        description: "Eco-friendly bags for retail and delivery.",
+        image: "/images/paper-bags-detail.png",
+        productSlugs: ["paper-bags"],
+      },
+      {
+        slug: "paper-boxes",
+        name: "Paper Boxes",
+        description: "Custom boxes with foil and emboss finishes.",
+        image: "/images/paper-boxes-detail.png",
+        productSlugs: ["paper-boxes"],
+      },
+    ],
+  },
+  {
+    slug: "accessories",
+    name: "Accessories",
+    description: "Cup carriers and takeaway essentials.",
+    image: "/images/cup-holders.png",
+    subcategories: [
+      {
+        slug: "cup-holders",
+        name: "Cup Holders",
+        description: "Branded carriers for 2-cup and 4-cup service.",
+        image: "/images/cup-holders-detail.png",
+        productSlugs: ["cup-holders"],
+      },
+    ],
+  },
 ];
 
 export const heroSlides = [
@@ -60,7 +190,7 @@ export const heroSlides = [
 ];
 
 // Image IDs verified against dupak.net/products page labels
-export const products = [
+export const products: Product[] = [
   {
     slug: "paper-cups",
     name: "Paper Cups",
@@ -69,6 +199,8 @@ export const products = [
       "Elegant hot & cold paper cups made from premium food-grade board with custom printing.",
     image: "/images/paper-cups-detail.jpg",
     thumb: "/images/paper-cups.png",
+    categorySlug: "paper-cups",
+    subcategorySlug: "single-wall-cup",
   },
   {
     slug: "pet-cups",
@@ -78,6 +210,8 @@ export const products = [
       "Ultra-clear disposable cups that let your drinks shine with full-color branding.",
     image: "/images/pet-cups-detail.png",
     thumb: "/images/pet-cups.png",
+    categorySlug: "pet-drinkware",
+    subcategorySlug: "pet-cups",
   },
   {
     slug: "u-shape-cups",
@@ -87,6 +221,8 @@ export const products = [
       "Distinctive U-shaped profile cups designed to stand out on any shelf or counter.",
     image: "/images/u-shape-cups-detail.png",
     thumb: "/images/u-shape-cups.png",
+    categorySlug: "paper-cups",
+    subcategorySlug: "u-shape-cups",
   },
   {
     slug: "ice-cream-bowls",
@@ -96,6 +232,8 @@ export const products = [
       "Thick, durable paper bowls perfect for gelato, frozen yogurt, and desserts.",
     image: "/images/ice-cream-bowls-detail.png",
     thumb: "/images/ice-cream-bowls.png",
+    categorySlug: "bowls",
+    subcategorySlug: "ice-cream-bowls",
   },
   {
     slug: "acai-bowls",
@@ -105,6 +243,8 @@ export const products = [
       "Stylish bowls crafted for smoothie and acai brands that demand visual appeal.",
     image: "/images/acai-bowls-detail.png",
     thumb: "/images/acai-bowls.png",
+    categorySlug: "bowls",
+    subcategorySlug: "acai-bowls",
   },
   {
     slug: "paper-bags",
@@ -114,6 +254,8 @@ export const products = [
       "Eco-friendly branded paper bags for retail, food delivery, and takeaway.",
     image: "/images/paper-bags-detail.png",
     thumb: "/images/paper-bags.png",
+    categorySlug: "bags-boxes",
+    subcategorySlug: "paper-bags",
   },
   {
     slug: "pet-bottles",
@@ -123,6 +265,8 @@ export const products = [
       "Clear PET bottles with custom labels — ideal for juices, water, and beverages.",
     image: "/images/pet-bottles-detail.png",
     thumb: "/images/pet-bottles.png",
+    categorySlug: "pet-drinkware",
+    subcategorySlug: "pet-bottles",
   },
   {
     slug: "paper-boxes",
@@ -132,6 +276,8 @@ export const products = [
       "Luxury paper boxes and food packaging with foil, embossing, and matte finishes.",
     image: "/images/paper-boxes-detail.png",
     thumb: "/images/paper-boxes.png",
+    categorySlug: "bags-boxes",
+    subcategorySlug: "paper-boxes",
   },
   {
     slug: "cup-holders",
@@ -141,8 +287,10 @@ export const products = [
       "Sturdy branded cup carriers that make takeaway service effortless and on-brand.",
     image: "/images/cup-holders-detail.png",
     thumb: "/images/cup-holders.png",
+    categorySlug: "accessories",
+    subcategorySlug: "cup-holders",
   },
-] as const;
+];
 
 export const marqueeProducts = products.map((p) => ({
   slug: p.slug,

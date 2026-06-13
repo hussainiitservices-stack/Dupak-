@@ -1,11 +1,9 @@
-"use client";
-
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { processSteps } from "@/lib/data";
 
 export default function Process() {
   return (
-    <section id="process" className="bg-background py-24">
+    <section id="process" className="section-lazy bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">

@@ -1,12 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { features, stats } from "@/lib/data";
 
 export default function About() {
   return (
-    <section id="about" className="bg-white py-24">
+    <section id="about" className="section-lazy bg-white py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <AnimateOnScroll direction="left">
@@ -15,6 +13,7 @@ export default function About() {
                 src="/images/about-factory.jpg"
                 alt="Dupak manufacturing facility"
                 fill
+                loading="lazy"
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
